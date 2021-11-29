@@ -1,1 +1,1 @@
-# 2122_5AHEL_FSST_snovkini_ProjectJBDC
+# 2122_5AHEL_FSST_snovkini_ProjectJDBC
