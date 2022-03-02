@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMultipart;
 public class JavaEmail {
 
 
-    private static Message prepareMessage(Session session, String myAccount, String empfaenger) throws Exception {
+    public static Message prepareMessage(Session session, String myAccount, String empfaenger) throws Exception {
         Message message = new MimeMessage(session);
 
         message.setFrom(new InternetAddress(myAccount));

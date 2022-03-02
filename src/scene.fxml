@@ -13,7 +13,7 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label layoutX="92.0" layoutY="76.0" prefHeight="37.0" prefWidth="106.0" text="Kategorie" textFill="#1e7fcb">
+      <Label layoutX="92.0" layoutY="76.0" prefHeight="37.0" prefWidth="106.0" text="model.Kategorie" textFill="#1e7fcb">
          <font>
             <Font name="Chalkboard SE Light" size="24.0" />
          </font>

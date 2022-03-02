@@ -1,20 +1,24 @@
 import javax.jms.Message;
 import javax.jms.Session;
-import javax.swing.text.html.ListView;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.Properties;
-import
+import com.sun.jdi.connect.Transport;
+import model.Kategorie;
 import model.ToDo;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+
+import static email.JavaEmail.prepareMessage;
 
 public class Controller {
 
     public Label personInfo;
     public Button messageButton;
     public Label dateInfo;
-    public ListView<Kategorie>categoryList;
+    public ListView<Kategorie> categoryList;
     public ListView<ToDo>toDoList;
 
     public void initialize() {
@@ -26,7 +30,7 @@ public class Controller {
         if (selected != null) {
             ToDo.setItems(selected);
         }
-        public void toDoList (MouseEvent mouseEvent){
+        public void toDoListViewClicked(MouseEvent mouseEvent){
             ToDo selected = toDoList.getSelectionModel().getSelectedItem();
             personInfo.setText(selected.getpersonInfo());
             dateInfo.setText(selected.getDateInfo());
@@ -41,8 +45,8 @@ public class Controller {
             properties.put("mail.smtp.host", "smtp.gmail.com");
             properties.put("mail.smtp.port", "587");
 
-            String myAccount = "allfamily@gmail.com";
-            String myPassword = "familyall";
+            String myAccount = "allfamily@gmail.com"; //Gmail Server
+            String myPassword = "familypassword";
             String empfaenger = person.getEmail();
 
             Session session = Session.getInstance(properties, new Authenticator() {
