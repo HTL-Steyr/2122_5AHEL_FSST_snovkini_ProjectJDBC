@@ -5,6 +5,7 @@ import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.Properties;
 import com.sun.jdi.connect.Transport;
+import javafx.event.ActionEvent;
 import model.Kategorie;
 import model.ToDo;
 import javafx.collections.ObservableList;
@@ -19,7 +20,7 @@ public class Controller {
     public Button messageButton;
     public Label dateInfo;
     public ListView<Kategorie> categoryList;
-    public ListView<ToDo>toDoList;
+    public ListView<ToDo> toDoList;
 
     public void initialize() {
         categoryList.getItems().addAll(Kategorie.loadAll());
@@ -37,8 +38,8 @@ public class Controller {
         }
 
 
-        public void messageButton (ActionEvent actionEvent){
-           ToDo person = null;
+        public void messagePerson(ActionEvent actionEvent){
+            ToDo person = null;
             Properties properties = new Properties();
             properties.put("mail.smtp.auth", "true");
             properties.put("mail.smtp.starttls.enable", "true");
@@ -66,5 +67,6 @@ public class Controller {
             }
         }
     }
+}
 }
 
