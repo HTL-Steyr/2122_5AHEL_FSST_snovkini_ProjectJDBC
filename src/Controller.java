@@ -4,6 +4,7 @@ import java.awt.*;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.Properties;
+
 import com.sun.jdi.connect.Transport;
 import javafx.event.ActionEvent;
 import model.Kategorie;
@@ -11,14 +12,14 @@ import model.ToDo;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TextField;
 
-import static email.JavaEmail.prepareMessage;
+//import static email.JavaEmail.prepareMessage;
 
 public class Controller {
 
-    public Label personInfo;
-    public Button messageButton;
-    public Label dateInfo;
+    public TextField personInfo;
+    public TextField dateInfo;
     public ListView<Kategorie> categoryList;
     public ListView<ToDo> toDoList;
 
@@ -29,16 +30,21 @@ public class Controller {
     public void categoryListViewClicked(MouseEvent mouseEvent) {
         Kategorie selected = categoryList.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            ToDo.setItems(selected);
+            toDoList.setItems(selected.loadToDo());
         }
+    }
         public void toDoListViewClicked(MouseEvent mouseEvent){
-            ToDo selected = toDoList.getSelectionModel().getSelectedItem();
-            personInfo.setText(selected.getpersonInfo());
-            dateInfo.setText(selected.getDateInfo());
+            ToDo selectedItem = toDoList.getSelectionModel().getSelectedItem();
+            personInfo.setText(selectedItem.getPersonName());
+            dateInfo.setText(selectedItem.getDateInfo());
         }
 
+    public void messagePerson(ActionEvent actionEvent) {
+        System.out.println("Nachricht gesendet");
+    }
 
-        public void messagePerson(ActionEvent actionEvent){
+
+        /*public void messagePerson (ActionEvent actionEvent){
             ToDo person = null;
             Properties properties = new Properties();
             properties.put("mail.smtp.auth", "true");
@@ -53,7 +59,7 @@ public class Controller {
             Session session = Session.getInstance(properties, new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(myAccount, myPassword);
+                    return new PasswordAuthentication(myAccount,myPassword);
                 }
             });
 
@@ -65,8 +71,8 @@ public class Controller {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }
+        }*/
     }
-}
-}
+
+
 

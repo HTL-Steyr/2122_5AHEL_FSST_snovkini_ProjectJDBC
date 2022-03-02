@@ -1,4 +1,4 @@
-package email;
+/*package email;
 
 import javax.jms.Message;
 import javax.jms.Session;
@@ -34,5 +34,5 @@ public class JavaEmail {
     }
 
 
-}
+}*/
 
