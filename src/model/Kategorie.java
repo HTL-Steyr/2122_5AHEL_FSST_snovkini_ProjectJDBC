@@ -18,29 +18,9 @@ public class Kategorie {
         this.name = name;
     }
 
-    public static Kategorie getById(int categoryID) {
-        //load one single department with the given id
-
-        Kategorie result = null;
-
-        try {
-            Connection c = Database.getInstance();
-            PreparedStatement statement = c.prepareStatement("SELECT * FROM snovkini_categories WHERE categories_ID = ?");
-
-            statement.setInt(1, categoryID);
-
-            ResultSet results = statement.executeQuery();
-
-            if (results.next()) {
-                result = new Kategorie(results.getInt("categories_ID"), results.getString("categorie_name"));
-            }
-
-            results.close();
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
+    @Override
+    public String toString() {
+        return name;
     }
 
     public static ObservableList<Kategorie> loadAll() {
@@ -49,9 +29,9 @@ public class Kategorie {
 
         try {
             Connection c = Database.getInstance();
-            PreparedStatement statement = c.prepareStatement("SELECT * FROM snovkini_categories");
+            PreparedStatement statement = c.prepareStatement("SELECT* FROM snovkini_categories");
 
-            ResultSet results = statement.executeQuery();       //querry weil Abfrage
+            ResultSet results = statement.executeQuery();
 
             while (results.next()) {
                 Kategorie tmp = new Kategorie(results.getInt("categories_ID"), results.getString("categorie_name"));
@@ -77,18 +57,18 @@ public class Kategorie {
 
         try {
             Connection c = Database.getInstance();
-            PreparedStatement statement = c.prepareStatement("Select * From employees WHERE department_id = ?");
+            PreparedStatement statement = c.prepareStatement("Select* From snovkini_toDo WHERE categories_ID = ?");
 
             statement.setInt(1, this.categoryID);
-            ResultSet results = statement.executeQuery();       //querry weil Abfrage
+            ResultSet results = statement.executeQuery();
 
-            while (results.next()) {                                    //if reicht weil nur 1 zurück kommt
-                //Department tmp = new Department(results.getInt("department_id"), results.getString("department_name"));
-                result.add(new ToDo(results.getInt("toDo_ID"),
+            while (results.next()) {
+
+
+                result.add(new ToDo(
                         results.getString("toDo_name"),
                         results.getString("date"),
-                        results.getString("person_Name"),
-                        results.getString("emailOfPerson")));
+                        results.getString("person_Name")));
             }
 
             results.close();

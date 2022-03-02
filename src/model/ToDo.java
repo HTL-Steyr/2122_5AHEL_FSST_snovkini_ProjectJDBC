@@ -16,16 +16,24 @@ public class ToDo {
     private int toDoID;
     private String toDoName;
 
-    public ToDo(int toDoID, String toDoName, String dateInfo, String email, String personName) {
+    public ToDo(String toDoName, String dateInfo, String personName) {
         this.dateInfo = dateInfo;
-        this.email = email;
         this.personName = personName;
         this.toDoID = toDoID;
         this.toDoName = toDoName;
     }
 
+    public ToDo(String toDoName) {
+        this.toDoName = toDoName;
+    }
+
     public String getDateInfo() {
         return dateInfo;
+    }
+
+    @Override
+    public String toString() {
+        return toDoName;
     }
 
     public String getPersonName() {
@@ -49,11 +57,10 @@ public class ToDo {
             ResultSet results = statement.executeQuery();
 
             if (results.next()) {
-                result = new ToDo(results.getInt("toDo_ID"),
+                result = new ToDo(
                         results.getString("toDo_name"),
                         results.getString("date"),
-                        results.getString("person_Name"),
-                        results.getString("emailOfPerson"));
+                        results.getString("person_Name"));
             }
 
             results.close();
@@ -75,11 +82,10 @@ public class ToDo {
             ResultSet results = statement.executeQuery();
 
             while (results.next()) {
-                ToDo tmp = new ToDo(results.getInt("toDo_ID"),
+                ToDo tmp = new ToDo(
                         results.getString("toDo_name"),
                         results.getString("date"),
-                        results.getString("person_Name"),
-                        results.getString("emailOfPerson"));
+                        results.getString("person_Name"));
                 result.add(tmp);
             }
 

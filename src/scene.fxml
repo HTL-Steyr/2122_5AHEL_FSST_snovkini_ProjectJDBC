@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <ListView fx:id="categoryList" layoutX="43.0" layoutY="134.0" prefHeight="313.0" prefWidth="203.0" />
+      <ListView fx:id="categoryList" layoutX="43.0" layoutY="134.0" onMouseClicked="#categoryListViewClicked" prefHeight="313.0" prefWidth="203.0" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="134.0" />
       <Label layoutX="473.0" layoutY="147.0" text="Welchen Wochentagen zu Erledigen">
          <font>
             <Font size="16.0" />
@@ -28,22 +28,22 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Button layoutX="493.0" layoutY="328.0" mnemonicParsing="false" onAction="#messagePerson" prefHeight="96.0" prefWidth="203.0" text="Nachricht an Person" textFill="#1e7fcb">
+      <Button layoutX="493.0" layoutY="328.0" mnemonicParsing="false" onAction="#messagePerson" prefHeight="96.0" prefWidth="223.0" text="Nachricht an Person" textFill="#1e7fcb" AnchorPane.leftAnchor="493.0" AnchorPane.rightAnchor="9.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
-      <ListView fx:id="toDoList" layoutX="261.0" layoutY="134.0" prefHeight="313.0" prefWidth="203.0" />
+      <ListView fx:id="toDoList" layoutX="261.0" layoutY="134.0" onMouseClicked="#toDoListViewClicked" prefHeight="313.0" prefWidth="203.0" AnchorPane.bottomAnchor="49.0" AnchorPane.topAnchor="134.0" />
       <Label layoutX="144.0" layoutY="14.0" text="Haushaltsplan der Familie" textFill="#007fff">
          <font>
             <Font name="Chalkduster" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="dateInfo" layoutX="507.0" layoutY="202.0">
+      <TextField fx:id="dateInfo" layoutX="507.0" layoutY="202.0" AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Bradley Hand ITC" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="personInfo" layoutX="507.0" layoutY="272.0">
+      <TextField fx:id="personInfo" layoutX="507.0" layoutY="272.0" AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Bradley Hand ITC" size="18.0" />
          </font>
